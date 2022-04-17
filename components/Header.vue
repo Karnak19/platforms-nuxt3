@@ -1,15 +1,33 @@
 <template>
-  <header class="h-10 flex flex-row-reverse items-center px-10 mb-5">
-    <nav class="">
-      <ul>
-        <li>
+  <div class="navbar bg-neutral text-neutral-content">
+    <div class="flex-1">
+      <NuxtLink
+        to="/"
+        class="btn btn-ghost normal-case text-xl"
+        title="homepage"
+      >
+        <img :src="header.logo.url" class="h-6" />
+      </NuxtLink>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal p-0">
+        <li v-for="item in header.menuItems">
           <NuxtLink
-            active-class="border-b-2 p-2 border-primary text-primary"
-            to="/"
-            >Home</NuxtLink
+            active-class="bg-primary text-primary-content"
+            :to="item.redirectionTarget"
           >
+            {{ item.name }}
+          </NuxtLink>
         </li>
       </ul>
-    </nav>
-  </header>
+    </div>
+  </div>
 </template>
+
+<script lang="ts" setup>
+import { Header } from "@origins-digital/types/ott";
+
+const { header } = defineProps<{
+  header: Header;
+}>();
+</script>

@@ -16,7 +16,12 @@
       :image="section.image"
     />
 
-    <div v-else class="text-xs border-2 border-primary">
+    <SectionCustomText
+      v-else-if="section._kenticoItemType === 'section_custom_text'"
+      :text="section.text"
+    />
+
+    <div v-else class="text-xs overflow-hidden border-2 border-primary">
       <pre>
       {{ JSON.stringify(section, null, 2) }}
     </pre

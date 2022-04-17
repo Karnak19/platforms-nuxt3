@@ -19,5 +19,6 @@
 </template>
 
 <script setup lang="ts">
-const { data: home } = await useKenticoPage("page_home");
+const { params } = useRoute();
+const { data: home } = await useKenticoPage(params.codename as string);
 </script>
