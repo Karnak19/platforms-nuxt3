@@ -1,10 +1,5 @@
 <template>
   <div>
-    <Head>
-      <Title>
-        {{ home.title }}
-      </Title>
-    </Head>
     <Section
       v-if="home"
       v-for="section in home.components"

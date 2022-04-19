@@ -1,3 +1,16 @@
+<script lang="ts">
+export default {
+  layout: "default",
+};
+</script>
+<script lang="ts" setup>
+import { SectionContent } from "@origins-digital/types/ott";
+
+const { section } = defineProps<{
+  section: SectionContent;
+}>();
+</script>
+
 <template>
   <div class="my-5">
     <SectionCarousel
@@ -21,19 +34,15 @@
       :text="section.text"
     />
 
+    <SectionGrid
+      v-else-if="section._kenticoItemType === 'section_dynamic_grid'"
+      :items="section.items"
+    />
+
     <div v-else class="text-xs overflow-hidden border-2 border-primary">
       <pre>
-      {{ JSON.stringify(section, null, 2) }}
-    </pre
-      >
+        {{ section }}
+      </pre>
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { SectionContent } from "@origins-digital/types/ott";
-
-const { section } = defineProps<{
-  section: SectionContent;
-}>();
-</script>
